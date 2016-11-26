@@ -6,10 +6,9 @@ var CurrentLocation = require('./CurrentLocation');
 var LocationList = require('./LocationList');
 
 
-class App extends React.Component {
+var App = React.createClass({
 
-	constructor(props){
-		super(props);
+	getInitialState(){
 
 		// Extract the favorite locations from local storage
 
@@ -21,22 +20,15 @@ class App extends React.Component {
 
 		// Nobody would get mad if we center it on Paris by default
 
-		this.state = {
+		return {
 			favorites: favorites,
 			currentAddress: 'Paris, France',
 			mapCoordinates: {
 				lat: 48.856614,
-				lng: 2.3522219,
-			},
-		},
-
-		// binding this to methods
-		this.toggleFavorite 		= this.toggleFavorite.bind(this);
-		this.isAddressInFavorites 	= this.isAddressInFavorites.bind(this);
-		this.removeFromFavorites 	= this.removeFromFavorites.bind(this);
-		this.addToFavorites 		= this.addToFavorites.bind(this);
-		this.searchForAddress 		= this.searchForAddress.bind(this);
-	}
+				lng: 2.3522219
+			}
+		};
+	},
 
 	toggleFavorite(address){
 
@@ -47,7 +39,7 @@ class App extends React.Component {
 			this.addToFavorites(address);
 		}
 
-	}
+	},
 
 	addToFavorites(address){
 
@@ -63,7 +55,7 @@ class App extends React.Component {
 		});
 
 		localStorage.favorites = JSON.stringify(favorites);
-	}
+	},
 
 	removeFromFavorites(address){
 
@@ -92,7 +84,7 @@ class App extends React.Component {
 			localStorage.favorites = JSON.stringify(favorites);
 		}
 
-	}
+	},
 
 	isAddressInFavorites(address){
 
@@ -107,7 +99,7 @@ class App extends React.Component {
 		}
 
 		return false;
-	}
+	},
 
 	searchForAddress(address){
 		
@@ -124,25 +116,18 @@ class App extends React.Component {
 
 				var latlng = results[0].geometry.location;
 
-				// self.setState({
-				// 	currentAddress: results[0].formatted_address,
-				// 	mapCoordinates: {
-				// 		lat: latlng.lat(),
-				// 		lng: latlng.lng()
-				// 	}
-				// });
-				self.state = {
+				self.setState({
 					currentAddress: results[0].formatted_address,
 					mapCoordinates: {
 						lat: latlng.lat(),
 						lng: latlng.lng()
 					}
-				};
+				});
 
 			}
 		});
 
-	}
+	},
 
 	render(){
 
@@ -167,6 +152,6 @@ class App extends React.Component {
 		);
 	}
 
-}
+});
 
 module.exports = App;

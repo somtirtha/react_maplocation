@@ -1,16 +1,12 @@
 var React = require('react');
+var LocationItem = require('./LocationItem');
 var moment = require('moment');
 
-class LocationItem extends React.Component {
+var LocationItem = React.createClass({
 
-	constructor(props) {
-		super(props);
-		this.handleClick = this.handleClick.bind(this);
-	}
-	
 	handleClick(){
 		this.props.onClick(this.props.address);
-	}
+	},
 
 	render(){
 
@@ -30,6 +26,6 @@ class LocationItem extends React.Component {
 
 	}
 
-}
+});
 
 module.exports = LocationItem;

@@ -1,15 +1,10 @@
 var React = require('react');
 
-class CurrentLocation extends React.Component {
-
-	constructor(props) {
-		super(props);
-		this.toggleFavorite = this.toggleFavorite.bind(this);
-	}
+var CurrentLocation = React.createClass({
 
 	toggleFavorite(){
 		this.props.onFavoriteToggle(this.props.address);
-	}
+	},
 
 	render(){
 
@@ -27,6 +22,6 @@ class CurrentLocation extends React.Component {
 		);
 	}
 
-}
+});
 
 module.exports = CurrentLocation;

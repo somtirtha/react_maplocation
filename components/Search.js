@@ -1,23 +1,14 @@
 var React = require('react');
 
-class Search extends React.Component {
+var Search = React.createClass({
 
-	constructor(props) {
-		super(props);
-
-		this.state = { value: '' };
-
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	// getInitialState() {
-	// 	return { value: '' };
-	// },
+	getInitialState() {
+		return { value: '' };
+	},
 
 	handleChange(event) {
-		this.state = {value: event.target.value};
-	}
+		this.setState({value: event.target.value});
+	},
 
 	handleSubmit(event){
 		
@@ -29,7 +20,7 @@ class Search extends React.Component {
 
 		// Unfocus the text input field
 		this.getDOMNode().querySelector('input').blur();
-	}
+	},
 
 	render() {
 
@@ -50,6 +41,6 @@ class Search extends React.Component {
 		);
 
 	}
-}
+});
 
 module.exports = Search;

@@ -1,7 +1,7 @@
 var React = require('react');
 var LocationItem = require('./LocationItem');
 
-class LocationList extends React.Component {
+var LocationList = React.createClass({
 
 	render(){
 
@@ -31,6 +31,6 @@ class LocationList extends React.Component {
 
 	}
 
-}
+});
 
 module.exports = LocationList;

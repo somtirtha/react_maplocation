@@ -1,12 +1,6 @@
 var React = require('react');
 
-class Map extends React.Component {
-	
-	constructor(props) {
-		super(props);
-		this.componentDidMount = this.componentDidMount.bind(this);
-		this.componentDidUpdate = this.componentDidUpdate.bind(this);
-	}
+var Map = React.createClass({
 
 	componentDidMount(){
 
@@ -15,7 +9,7 @@ class Map extends React.Component {
 		// This makes sure that our map initialization code is run the first time.
 
 		this.componentDidUpdate();
-	}
+	},
 
 	componentDidUpdate(){
 
@@ -43,7 +37,7 @@ class Map extends React.Component {
 			lat: this.props.lat,
 			lng: this.props.lng
 		});
-	}
+	},
 
 	render(){
 
@@ -55,6 +49,6 @@ class Map extends React.Component {
 		);
 	}
 
-}
+});
 
 module.exports = Map;
